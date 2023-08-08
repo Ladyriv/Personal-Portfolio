@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Niramit:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    body {
+        @apply bg-purple-100;
+        
+    }
+    html {
+        font-family: 'Niramit', sans-serif;
+    }
+}
+
+@font-face {
+    font-family: 'SOUTHERN';
+    src: url('/fonts/Southern-Beach.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+    font-style: normal;
+}
