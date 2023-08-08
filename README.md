@@ -27,7 +27,7 @@ Para desplegar o descargar este proyecto:
  
  
 ## Demo  :computer:
-- https://leidyrivera-portafolio.vercel.app/
+- https://leidyriveraf-portfolio.vercel.app/
 
 ## Autor
 - [@LeidyRivera](https://github.com/Ladyriv)
