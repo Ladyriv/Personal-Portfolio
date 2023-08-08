@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import type { NextPage } from 'next'
 //import Head from 'next/head'
-import styles from '@/styles/globals.css';
+import styles from '../styles/globals.css';
 import { useForm } from 'react-hook-form';
 import { Link } from "react-scroll/modules"
 
