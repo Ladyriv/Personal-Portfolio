@@ -5,6 +5,7 @@ import type { NextPage } from 'next'
 import styles from '../styles/globals.css';
 import { useForm } from 'react-hook-form';
 import { Link } from "react-scroll/modules"
+import toast, { Toaster } from 'react-hot-toast';
 
 interface DataProps {
   name: string;
@@ -26,7 +27,7 @@ const ContactSection: NextPage = () => {
 const onSubmit = async (data: DataProps) => {
   try {
     setIsLoading(true)
-    const res = await fetch('/api/contact.ts', {
+    const res = await fetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -37,11 +38,14 @@ const onSubmit = async (data: DataProps) => {
     const body = await res.json(); 
 
     if(res.ok) {
-      alert(`${body.message} 🚀`);
+      toast.success(`${body.message} 🚀`, {
+        duration: 4000,
+        position: 'bottom-center'
+      });
     }
 
     if(res.status === 400) {
-      alert(`${body.message} 😢`);
+      toast.error(`${body.message} 😢`);
     }
 
     setIsLoading(false)
@@ -53,18 +57,23 @@ const onSubmit = async (data: DataProps) => {
 }
 
   return (
-    <div className="bg-purple-200 shadow-md rounded-md px-8 pt-6 pb-8 mb-4 mt-14 mx-auto max-w-screen-md dark:bg-purple-200 dark:shadow-md">
+    <section id="contact">
+      <div className="flex flex-row items-center text-center justify-center ">
+        <Link
+          to="contact"
+          activeClass="active"
+          spy={true}
+          smooth={true}
+          offset={-100}
+          duration={500}
+        >
+        </Link>
+      </div>
+      <div className="bg-purple-200 shadow-md rounded-md px-8 pt-6 pb-8 mb-4 mt-14 mx-auto max-w-screen-md dark:bg-purple-200 dark:shadow-md">
       <div>
-          <Link to="contact" activeClass="active"    
-                spy={true}
-                smooth={true}
-                offset={-100}
-                duration={500}
-              >
-              <div className="container flex items-center space-x-2 text-center">
-                <h2 className="text-2xl text-center font-bold  dark:text-neutral-500">Contactame!</h2>
-              </div>
-          </Link>
+        <div className="container flex items-center space-x-2 text-center">
+          <h2 className="text-2xl text-center font-bold  dark:text-neutral-500">Contactame!</h2>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="name" className="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">Nombre y apellido</label>
           <input id="name" className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg  dark:text-gray-800 border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-purple-100 dark:border-gray-400 dark:placeholder-purple-100 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" {...register('name', { required: true })} type="text" />
@@ -79,10 +88,14 @@ const onSubmit = async (data: DataProps) => {
           {errors.message && <p className={styles.error}>{errors.message.type}</p>}
 
           <button type="submit" disabled={isLoading} className="rounded-md bg-purple-800 px-3 py-2 mt-6 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{isLoading ? 'loading...' : 'submit'}</button>
+          <Toaster />
         </form>
       </div>
 
     </div>
+
+    </section>
+    
   )
 }
 

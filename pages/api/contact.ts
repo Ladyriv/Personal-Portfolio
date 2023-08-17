@@ -1,4 +1,4 @@
-require('dotenv').config();  // do I actually need this?
+require('dotenv').config(); 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import * as nodemailer from 'nodemailer';
 
@@ -7,13 +7,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   // https://nodemailer.com/smtp/
   const transporter = nodemailer.createTransport({
-    service: 'smtp-relay.brevo.com',
-    port: 587,
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
-      user: process.env.email,
-      pass: process.env.SMTP_PASS,
+      user: process.env.GMAIL_FROM,
+      pass: process.env.GMAIL_APP_PASSWORD,
     },
-    secure: false, // Default value but showing for explicitness
+    tls: { rejectUnauthorized: false }
+     // Default value but showing for explicitness
   });
 
   const { name, email, message } = req.body;
@@ -25,7 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // https://nodemailer.com/message/#common-fields
   const mailData = {
     from: email,
-    to: email,
+    to: process.env.GMAIL_FROM,
     subject: `Message from ${name}`,
     text: `${message} | Sent from: ${email}`,
     html: `<div>${message}</div><p>Sent from: ${email}</p>`
@@ -36,10 +39,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
       if(err) {
         reject(err);
-        return res.status(500).json({ error: err.message || 'Something went wrong' });
+        return res.status(500).json({ error: err.message, emailData: false || 'Algo salió mal' });
       } else {
         resolve(info.accepted)
-        res.status(200).json({message: 'Message sent!'});
+        res.status(200).json({message: 'Mensaje enviado!'});
       }
     })
   })
