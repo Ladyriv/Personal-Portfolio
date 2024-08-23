@@ -7,16 +7,24 @@ import { BsGithub, BsArrowUpRightSquare } from "react-icons/bs"
 
 const projects = [
   {
+    name: "E-commerce de licores",
+    description:
+      "Este proyecto es una aplicación de comercio electrónico para la venta de licores. La aplicación permite a los usuarios navegar por diferentes categorías de productos, agregar items al carrito y realizar compras.",
+    image: "/e-commerce.png",
+    github: "https://github.com/Ladyriv/E-commerceWeb",
+    link: "https://sellodorado-ecommerce.vercel.app/",
+  },
+  {
     name: "Programate School",
     description:
-      "Plataforma para la escuela Prográmate School de la fundación Educamas, donde se integra FrontEnd y Backend.",
+      "Plataforma educativa para la escuela Prográmate School de la fundación Educamas, donde los usuarios pueden conocer la información de convocatorias y acceder para inscribirse a ellas.",
     image: "/programate-school.png",
     github: "https://github.com/programateacademy/PROGRAMATE-SCHOOL-FRONT",
     link: "https://programate-school-front.vercel.app/",
   },
   {
     name: "Tetris",
-    description: "Desarrollo del juego tetris con Javascript",
+    description: "Desarrollo del juego tetris implementando Javascript vanilla, html y css",
     image: "/BigTetrisJS.png",
     github: "https://github.com/MariaHerrera03/Tetris",
     link: "https://tetrisgames.netlify.app/",
@@ -24,7 +32,7 @@ const projects = [
   {
     name: "Ahogados en código",
     description:
-      "Aplicación interactiva donde se agrega un listado de nombres y se eligen al azar.",
+      "Aplicación interactiva donde se agrega un listado de nombres y se eligen al azar. Realizado con Javascript, html y css.",
     image: "/WheelOfDoom.png",
     github: "https://github.com/manuel101284/WheelOfDoom",
     link: "https://ahogadosencodigo.netlify.app/",
@@ -36,14 +44,6 @@ const projects = [
     image: "/calculator.png",
     github: "https://github.com/Ladyriv/calculator-react",
     link: "https://calculator-react-ladyriv.vercel.app/",
-  },
-  {
-    name: "Z-Shop",
-    description:
-      "Reto de diseño de una pagina Front-End, utilizando solo HTML y CSS",
-    image: "/zshop.png",
-    github: "https://github.com/Ladyriv/zShop-css",
-    link: "https://zshop-css-by-lady.vercel.app/index.html",
   },
 ]
 

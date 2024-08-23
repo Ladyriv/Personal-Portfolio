@@ -24,7 +24,7 @@ const HeroSection = () => {
             <span className="font-semibold text-purple-600 dark:text-teal-500">
               Desarrolladora Web Full Stack{" "}
             </span>
-            en constante aprendizaje, con curiosidad en la tecnología
+            en constante aprendizaje, con curiosidad en la tecnología y afrontando nuevos retos
           </p>
           <Link
             to="projects"

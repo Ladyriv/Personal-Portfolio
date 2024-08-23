@@ -14,6 +14,7 @@ const skills = [
   { skill: "GitHub" },
   { skill: "Next.js" },
   { skill: "MongoDB" },
+  { skill: "MySQL" },
   
 ]
 
@@ -32,7 +33,7 @@ const AboutSection = () => {
             </h1>
             <p>
               Hola, mi nombre es Leidy y soy una persona {" "}
-              <span className="font-bold">{"motivada"}</span>, y, 
+              <span className="font-bold">{"motivada"}</span>, y ,    
               <span className="font-bold">{"curiosa"}</span> por lo que hago
             </p>
             <br />
